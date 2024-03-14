@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   font-family: "Ubuntu", sans-serif;
+   font-size: 100%;
+}
+
+header h1 {
+   text-align: center;
+   margin: 0.5em 0;
+   font-size: 3em;
+}
+
+#level {
+   text-align: center;
+   margin: 0.5em auto;
+   max-width: 400px;
+}
+
+#score {
+   margin: 0.5em auto;
+   height: 30px;
+   font-weight: bold;
+}
+
+#grid {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 25px auto;
+}
+
+#grid div {
+   width: 30px;
+   height: 30px;
+   line-height: 30px;
+   background-color: white;
+   border: 1px solid #ededec;
+   box-sizing: border-box;
+   font-weight: bold;
+   text-align: center;
+   cursor: pointer;
+}
+
+.help {
+   margin: 0.5em auto 5em auto;
+   max-width: 800px;
+}
+
+.grey {
+   background: url(img/grid.png);
+}
+
+#btnPlay {
+   margin-top: 0.5em;
+   padding: 0.5em;
+}
+
+footer {
+   text-align: center;
+}
