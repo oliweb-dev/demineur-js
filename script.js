@@ -229,16 +229,20 @@ function propagation(cell) {
    }
 }
 
-const handleClick = event => {
+function getIndex(idHtml) {
+   const x = parseInt(idHtml.split('_')[0]);
+   const y = parseInt(idHtml.split('_')[1]);
+   return gridArray.findIndex(g => g.x === x && g.y === y);
+}
+
+function handleClick(event) {
    if (win || lose) return;
 
    const idHtml = event.currentTarget.id;
-   const x = parseInt(idHtml.split('_')[0]);
-   const y = parseInt(idHtml.split('_')[1]);
-   const index = gridArray.findIndex(g => g.x === x && g.y === y);
-   if (index === -1) {
-      return;
-   }
+   const index = getIndex(idHtml);
+
+   if (index === -1) return;
+
    let cell = gridArray[index];
    // Mine = 9, empty = 0, Clue = [1-8]
    if (cell.v === 9) {
@@ -257,20 +261,23 @@ const handleClick = event => {
    }
 }
 
-const handleRightClick = event => {
+function handleRightClick(event) {
    event.preventDefault();
    if (win || lose) return;
-
-   const cellId = event.currentTarget.id;
+   const idHtml = event.currentTarget.id;
    const cellContent = event.currentTarget.innerText;
-   const cellHtml = document.getElementById(cellId);
+   const cellHtml = document.getElementById(idHtml);
+   const index = getIndex(idHtml);
+   if (index === -1) return;
+   let cell = gridArray[index];
 
    switch (cellContent) {
       case '🚩':
          cellHtml.innerText = '❔';
          break;
       case '❔':
-         cellHtml.innerText = '';
+         // Set to initial value
+         cellHtml.innerText = cell.v;
          break;
       default:
          cellHtml.innerText = '🚩';
